@@ -1,0 +1,296 @@
+@use "../colors/colors.scss" as *;
+@use "../mixins/mixins.scss" as *;
+
+#cases {
+  background-color: $light-background;
+}
+
+.cases-title {
+  background-color: $light-background;
+  z-index: 3;
+  width: 100%;
+  padding: 0 20px;
+  margin-bottom: 2rem;
+  
+  & span {
+    @include font(3.5rem, 900);
+    color: $white;
+    position: relative;
+    z-index: 3;
+    display: inline-block;
+    letter-spacing: -0.5px;
+    
+    & strong {
+      color: $blue;
+    }
+    
+    &::before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 4px;
+      background: linear-gradient(90deg, $gold, rgba($gold, 0.2));
+      bottom: -10px;
+      left: 0;
+      border-radius: 2px;
+    }
+  }
+}
+
+.cases-block {
+  background-color: $light-background;
+  width: 100%;
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  padding: 4rem 20px;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba($gold, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+  }
+}
+
+.cases-item {
+  width: calc((100% / 3) - 25px);
+  min-width: 380px;
+  max-width: 450px;
+  padding: 16px;
+  border: 1px solid rgba($border-white, 0.08);
+  background: linear-gradient(145deg, #1f1f1f, #1a1a1a);
+  border-radius: 20px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.05);
+  
+  /* Тонкая обводка снизу */
+  border-bottom: 2px solid rgba($gold, 0.15);
+  
+  /* Микро-ховер (еле заметный) */
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba($border-white, 0.15);
+    border-bottom-color: rgba($gold, 0.4);
+    box-shadow: 
+      0 15px 30px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba($gold, 0.1);
+    
+    .cases-item-img {
+      scale: 1.08;
+    }
+    
+    .cases-item-img-effects {
+      &::after {
+        opacity: 1;
+      }
+    }
+    
+    .cases-before, .cases-after {
+      background-color: #2a2a2a;
+    }
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 1300px) {
+    min-width: 350px;
+  }
+  
+  @media (max-width: 800px) {
+    width: calc(50% - 25px);
+    min-width: 300px;
+  }
+  
+  @media (max-width: 700px) {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+.cases-item-img-effects {
+  overflow: hidden;
+  width: 100%;
+  height: 260px;
+  border-radius: 16px;
+  position: relative;
+  margin-bottom: 16px;
+  
+  /* Тонкий градиент при ховере */
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, rgba($gold, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+.cases-item-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  padding: 16px;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.05);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  
+  & a {
+    @include font(0.9rem, 400);
+    background: rgba($black, 0.6);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba($border-white, 0.15);
+    padding: 6px 18px;
+    border-radius: 30px;
+    color: $white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+    z-index: 2;
+    
+    &:hover {
+      background: $gold;
+      color: $black;
+      border-color: $gold;
+    }
+  }
+}
+
+.cases-item-content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  
+  & h3 {
+    @include font(1.4rem, 800);
+    color: $white;
+    line-height: 1.3;
+    margin: 0;
+  }
+}
+
+.cases-item-table {
+  display: flex;
+  gap: 12px;
+}
+
+.cases-before, .cases-after {
+  background-color: #242424;
+  border: 1px solid rgba($border-white, 0.1);
+  @include font(0.85rem, 300);
+  color: $gray;
+  padding: 14px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 50%;
+  transition: background-color 0.3s ease;
+  
+  & h5 {
+    @include font(1rem, 500);
+    color: $blue;
+    position: relative;
+    margin: 0 0 5px 0;
+    
+    &::before {
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 2px;
+      background-color: $blue;
+      top: -6px;
+      left: 0;
+      border-radius: 2px;
+    }
+  }
+  
+  &-item {
+    line-height: 1.4;
+    position: relative;
+    padding-left: 12px;
+    
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: $blue;
+      opacity: 0.7;
+    }
+  }
+}
+
+.cases-after-item::before {
+  color: $light-green !important;
+}
+
+.cases-item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba($border-white, 0.1);
+  flex-wrap: wrap;
+  gap: 10px;
+  
+  & span {
+    @include font(0.9rem, 500);
+    color: $gray;
+    
+    & strong {
+      color: $gold;
+      font-weight: 700;
+      margin-left: 4px;
+    }
+  }
+}
+
+/* Адаптивность текста */
+@media (max-width: 600px) {
+  .cases-title span {
+    font-size: 2.5rem;
+  }
+  
+  .cases-item-content h3 {
+    font-size: 1.2rem;
+  }
+  
+  .cases-before, .cases-after {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+  
+  .cases-item-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 400px) {
+  .cases-item {
+    min-width: 280px;
+    padding: 12px;
+  }
+  
+  .cases-item-img-effects {
+    height: 200px;
+  }
+}

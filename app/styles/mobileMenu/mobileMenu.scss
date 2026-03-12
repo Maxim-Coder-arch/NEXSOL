@@ -1,0 +1,281 @@
+@use "../colors/colors.scss" as *;
+@use "../mixins/mixins.scss" as *;
+
+.mobile-menu {
+  display: none; /* Скрыто на десктопе */
+  
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+/* Кнопка-бургер */
+.mobile-menu-burger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  background: rgba($light-black, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba($border-white, 0.1);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  z-index: 1001;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  
+  .burger-line {
+    width: 24px;
+    height: 2px;
+    background: $white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Золотой акцент при наведении */
+  &:hover {
+    border-color: $gold;
+    
+    .burger-line {
+      background: $gold;
+    }
+  }
+}
+
+/* Затемнение фона */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 1002;
+}
+
+/* Панель меню */
+.mobile-menu-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 85%;
+  max-width: 400px;
+  height: 100vh;
+  background: linear-gradient(145deg, $light-black, #0a0a0a);
+  border-left: 1px solid rgba($border-white, 0.1);
+  z-index: 1003;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+  
+  /* Золотая линия сверху */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, $gold, transparent);
+  }
+}
+
+/* Хедер меню с логотипом */
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba($border-white, 0.1);
+}
+
+.mobile-menu-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+  .logotype-company {
+    width: 36px;
+    height: 36px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("/icons/logo.png");
+    filter: drop-shadow(0 0 10px rgba($gold, 0.3));
+  }
+  
+  & span {
+    @include font(1.4rem, 700);
+    color: $white;
+    letter-spacing: 1px;
+  }
+}
+
+/* Кнопка закрытия */
+.mobile-menu-close {
+  width: 40px;
+  height: 40px;
+  background: rgba($border-white, 0.05);
+  border: 1px solid rgba($border-white, 0.1);
+  border-radius: 50%;
+  color: $gray;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    border-color: $gold;
+    color: $gold;
+    transform: rotate(90deg);
+  }
+}
+
+/* Навигация */
+.mobile-menu-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 0;
+}
+
+.mobile-menu-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba($border-white, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    left: -100%;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, $gold, $light-green);
+    transition: left 0.3s ease;
+  }
+  
+  &:hover {
+    padding-left: 10px;
+    
+    &::before {
+      left: 0;
+    }
+    
+    .mobile-menu-link-label {
+      color: $gold;
+    }
+    
+    .mobile-menu-link-arrow {
+      opacity: 1;
+      transform: translateX(5px);
+    }
+  }
+}
+
+.mobile-menu-link-label {
+  @include font(1.6rem, 600);
+  color: $white;
+  transition: color 0.3s ease;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+.mobile-menu-link-arrow {
+  color: $gold;
+  font-size: 1.8rem;
+  opacity: 0.5;
+  transform: translateX(0);
+  transition: all 0.3s ease;
+}
+
+/* Футер меню с контактами */
+.mobile-menu-footer {
+  padding-top: 30px;
+  border-top: 1px solid rgba($border-white, 0.1);
+}
+
+.mobile-menu-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.mobile-menu-contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: $gray;
+  transition: color 0.3s ease;
+  
+  .contact-icon {
+    font-size: 1.2rem;
+    opacity: 0.7;
+  }
+  
+  & span:last-child {
+    @include font(1rem, 300);
+  }
+  
+  &:hover {
+    color: $gold;
+    
+    .contact-icon {
+      opacity: 1;
+    }
+  }
+}
+
+.mobile-menu-slogan {
+  @include font(0.9rem, 300);
+  color: rgba($gray, 0.5);
+  text-align: center;
+  position: relative;
+  padding: 15px 0 5px;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 1px;
+    background: rgba($gold, 0.3);
+  }
+}
+
+/* Адаптивность для совсем маленьких */
+@media (max-width: 480px) {
+  .mobile-menu-panel {
+    width: 90%;
+    padding: 20px;
+  }
+  
+  .mobile-menu-link-label {
+    font-size: 1.4rem;
+  }
+  
+  .mobile-menu-logo span {
+    font-size: 1.2rem;
+  }
+}

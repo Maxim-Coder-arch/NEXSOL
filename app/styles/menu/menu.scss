@@ -1,0 +1,73 @@
+@use "../colors/colors.scss" as *;
+@use "../mixins/mixins.scss" as *;
+
+.menu {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.245);
+  backdrop-filter: blur(10px);
+  border-bottom: solid 1px rgba($dark-gray, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  padding: {
+    left: 20px;
+    right: 20px;
+  };
+  @media (max-width: 768px) {
+    display: none;
+  }
+  & ul {
+    display: flex;
+    column-gap: 15px;
+    & li {
+      display: flex;
+      justify-content: center;
+      &:hover::before {
+        top: 0px;
+        opacity: 1;
+      }
+    }
+    & li::before {
+      content: "𖤂";
+      position: absolute;
+      color: $gray;
+      top: -10px;
+      rotate: 180deg;
+      opacity: 0;
+      transition: all 0.2s ease-in-out;
+    }
+    & li a {
+      @include font(1rem, 500);
+      color: $gray;
+      letter-spacing: 1px;
+      text-transform: lowercase;
+      transition: color 0.2s ease-in-out;
+      &:hover {
+        color: $light-green;
+      }
+    }
+  }
+}
+
+
+.logotype-company {
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("/icons/logo.png");
+}
+
+.logo-block {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  & span {
+    @include font(1.2rem, 600);
+    color: $white;
+  }
+}

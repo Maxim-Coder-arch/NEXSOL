@@ -1,0 +1,94 @@
+@use "../colors/colors.scss" as *;
+@use "../mixins/mixins.scss" as *;
+
+.faq-block {
+  background-color: $black;
+  min-height: 600px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 20px;
+}
+
+.faq {
+  width: 90%;
+  max-width: 900px;
+  background-color: $light-background;
+  border: 1px solid rgba($border-white, 0.1);
+  border-radius: 24px;
+  padding: 2rem;
+}
+
+.faq-title {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba($border-white, 0.1);
+  padding-bottom: 1rem;
+  
+  & span:first-child {
+    @include font(2rem, 900);
+    color: $gold;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  & span:last-child {
+    @include font(1rem, 300);
+    color: $gray;
+  }
+}
+
+.faq-item {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba($border-white, 0.05);
+  
+  &.active {
+    border-bottom-color: rgba($gold, 0.3);
+  }
+}
+
+.faq-item-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  cursor: pointer;
+  
+  & span {
+    @include font(1.1rem, 500);
+    color: $white;
+    transition: color 0.3s ease;
+  }
+  
+  &:hover span {
+    color: $light-green;
+  }
+}
+
+.faq-item-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba($gold, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  & span {
+    @include font(1.5rem, 300);
+    color: $gold;
+    line-height: 1;
+  }
+}
+
+.faq-item-answer {
+  overflow: hidden;
+  
+  & span {
+    @include font(0.95rem, 300);
+    color: $gray;
+    display: block;
+    padding: 0 0 1rem 0;
+    line-height: 1.6;
+  }
+}
