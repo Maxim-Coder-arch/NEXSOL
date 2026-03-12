@@ -4,43 +4,14 @@ import "../../styles/mobileMenu/mobileMenu.scss";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
-
-type MenuProps = {
-  label: string;
-  link: string;
-}
-
-const data: MenuProps[] = [
-  {
-    label: "О нас",
-    link: "#about"
-  },
-  {
-    label: "Экосистема",
-    link: "#ecosystem"
-  },
-  {
-    label: "кейсы",
-    link: "#cases"
-  },
-  {
-    label: "FAQ",
-    link: "#faq"
-  },
-  {
-    label: "Контакты",
-    link: "#footer"
-  }
-]
+import { data } from "@/data/menu.data";
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <nav className="mobile-menu">
-      {/* Кнопка-бургер */}
       <motion.button 
         className="mobile-menu-burger"
         onClick={toggleMenu}
@@ -64,7 +35,6 @@ const MobileMenu = () => {
         />
       </motion.button>
 
-      {/* Затемнение фона */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -78,7 +48,6 @@ const MobileMenu = () => {
         )}
       </AnimatePresence>
 
-      {/* Само меню */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -93,7 +62,6 @@ const MobileMenu = () => {
               duration: 0.4
             }}
           >
-            {/* Логотип в меню */}
             <div className="mobile-menu-header">
               <div className="mobile-menu-logo">
                 <div className="logotype-company" />
@@ -108,7 +76,6 @@ const MobileMenu = () => {
               </motion.button>
             </div>
 
-            {/* Навигация */}
             <div className="mobile-menu-nav">
               {data.map((item, index) => (
                 <motion.div
@@ -131,8 +98,6 @@ const MobileMenu = () => {
                 </motion.div>
               ))}
             </div>
-
-            {/* Контакты в меню */}
             <motion.div 
               className="mobile-menu-footer"
               initial={{ opacity: 0, y: 20 }}

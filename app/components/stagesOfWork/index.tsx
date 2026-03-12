@@ -3,29 +3,7 @@
 import "../../styles/stagesOfWork/stagesOfWork.scss";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-
-const data = [
-  {
-    title: "Диагностика",
-    description: "Анализируем рынок, изучаем вашу нишу, конкурентов и текущую ситуацию",
-  },
-  {
-    title: "Стратегия",
-    description: "Рисуем роадмап. Показываем, что, зачем и когда мы делаем",
-  },
-  {
-    title: "Реализация",
-    description: "Собираем команду под задачу и создаем продукт",
-  },
-  {
-    title: "Поддержка",
-    description: "Мы не исчезаем после оплаты. Первая неделя поддержки — бесплатно",
-  },
-  {
-    title: "Масштабирование",
-    description: "Через 3-6 месяцев садимся и смотрим: что сработало? Куда копать дальше?",
-  },
-]
+import { data } from "@/data/stagesOfWork.data";
 
 const StagesOfWork = () => {
   const ref = useRef(null);

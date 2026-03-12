@@ -3,30 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import "../../styles/about/about.scss";
 import { useRef } from "react";
-
-const reviews = [
-  {
-    name: "Екатерина",
-    role: "Владелец салона красоты «Богиня»",
-    text: "Сделали сайт и настроили рекламу за 1 неделю. Клиентов стало так много, что пришлось нанимать дополнительного мастера!",
-    rating: 5,
-    avatar: "/avatars/avatar1.png"
-  },
-  {
-    name: "Алексей",
-    role: "Основатель фитнес-клуба «SportUp»",
-    text: "Долго искал подрядчика, который реально понимает, как привлекать клиентов. Большое спасибо!",
-    rating: 5,
-    avatar: "/avatars/avatar2.png"
-  },
-  {
-    name: "Марина",
-    role: "Руководитель клининговой компании",
-    text: "Первая неделя поддержки бесплатно — это подкупило. Ребята помогли разобраться с админкой, настроили всё под нас. Теперь работаем на абонементе.",
-    rating: 5,
-    avatar: "/avatars/avatar3.png"
-  }
-];
+import { reviews } from "@/data/reviews.data";
 
 const About = () => {
   const toggle = useRef(null);
@@ -97,8 +74,6 @@ const About = () => {
             </motion.div>
           </div>
         </div>
-
-        {/* БЛОК С ОТЗЫВАМИ ВМЕСТО ГРАФИКА */}
         <motion.div 
           className="about-reviews"
           initial={{ opacity: 0, x: 50 }}
@@ -129,11 +104,7 @@ const About = () => {
               >
                 <div className="review-card-header">
                   <div className="review-card-avatar">
-                    {review.avatar ? (
-                      <img src={review.avatar} alt={review.name} />
-                    ) : (
-                      <span>{review.name[0]}</span>
-                    )}
+                    <div className="review-avatar"></div>
                   </div>
                   <div className="review-card-info">
                     <span className="review-card-name">{review.name}</span>
@@ -151,7 +122,7 @@ const About = () => {
                   ))}
                 </div>
 
-                <div className="review-card-quote">"</div>
+                <div className="review-card-quote">&#44;</div>
               </motion.div>
             ))}
           </div>

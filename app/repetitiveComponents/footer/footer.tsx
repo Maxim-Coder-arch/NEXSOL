@@ -2,16 +2,10 @@
 
 import "../../styles/footer/footer.scss";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { socials } from "@/data/socials.data";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
-  const socials = [
-    { name: "Tg", link: "#", icon: "tg" },
-    { name: "VK", link: "#", icon: "vk" },
-    { name: "Inst", link: "#", icon: "inst" },
-  ];
 
   return (
     <footer id="footer">
@@ -75,7 +69,7 @@ const Footer = () => {
           >
             <h3>Соцсети</h3>
             <div className="footer-social-icons">
-              {socials.map((social, index) => (
+              {socials.map((social) => (
                 <motion.a
                   key={social.name}
                   href={social.link}
@@ -103,8 +97,8 @@ const Footer = () => {
               transition={{ duration: 0.5, delay: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="slogan-tag">Визитка: NEXSOL — ваш надежный центр роста</div>
-              <div className="slogan-tag">Email: Растем вместе</div>
+              <div className="slogan-tag">NEXSOL — ваш надежный центр роста</div>
+              <div className="slogan-tag">Растем вместе</div>
               <div className="slogan-tag">Презентация: Стратегия. Сайты. Рост</div>
             </motion.div>
           </motion.div>

@@ -1,34 +1,5 @@
 import "../../styles/cases/cases.scss";
-
-const data = [
-  {
-    img: "/presentations/large-minion.png",
-    title: "Монопородный питомник кошек мейн-кунов",
-    before: ["Меньше 5 клиентов в месяц", "Нету сайта", "Плохая оптимизация SEO", "Нету аналитики", "Нету рекламы"],
-    after: ["Больше 15 клиентов в месяц", "Сайт с админ панелью", "Хорошая сео оптимизация для сайта", "Успешная аналитика", "Реклама в разлтчных соц сетях"],
-    revenue: "350 000 рублей",
-    clientsInMonth: "17",
-    link: "https://large-minion.vercel.app/"
-  },
-  {
-    img: "/presentations/large-minion.png",
-    title: "Монопородный питомник кошек мейн-кунов",
-    before: ["Меньше 5 клиентов в месяц", "Нету сайта", "Плохая оптимизация SEO", "Нету аналитики", "Нету рекламы"],
-    after: ["Больше 15 клиентов в месяц", "Сайт с админ панелью", "Хорошая сео оптимизация для сайта", "Успешная аналитика", "Реклама в разлтчных соц сетях"],
-    revenue: "350 000 рублей",
-    clientsInMonth: "17",
-    link: "https://large-minion.vercel.app/"
-  },
-  {
-    img: "/presentations/large-minion.png",
-    title: "Монопородный питомник кошек мейн-кунов",
-    before: ["Меньше 5 клиентов в месяц", "Нету сайта", "Плохая оптимизация SEO", "Нету аналитики", "Нету рекламы"],
-    after: ["Больше 15 клиентов в месяц", "Сайт с админ панелью", "Хорошая сео оптимизация для сайта", "Успешная аналитика", "Реклама в разлтчных соц сетях"],
-    revenue: "350 000 рублей",
-    clientsInMonth: "17",
-    link: "https://large-minion.vercel.app/"
-  }
-]
+import { data } from "@/data/cases.data";
 
 const Cases = () => {
   return (
@@ -52,7 +23,7 @@ const Cases = () => {
                     <h5>До</h5>
                     {
                       item.before.map((point) => (
-                        <div className="cases-before-item" key={index}>-{point}</div>
+                        <div className="cases-before-item" key={point}>-{point}</div>
                       ))
                     }
                   </div>
@@ -60,7 +31,7 @@ const Cases = () => {
                     <h5>После</h5>
                     {
                       item.after.map((point) => (
-                        <div className="cases-after-item" key={index}>-{point}</div>
+                        <div className="cases-after-item" key={point}>-{point}</div>
                       ))
                     }
                   </div>

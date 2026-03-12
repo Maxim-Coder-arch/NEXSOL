@@ -2,34 +2,7 @@
 
 import "../../styles/menu/menu.scss";
 import { motion } from "framer-motion";
-
-type MenuProps = {
-  label: string;
-  link: string;
-}
-
-const data: MenuProps[] = [
-  {
-    label: "О нас",
-    link: "#"
-  },
-  {
-    label: "Экосистема",
-    link: "#"
-  },
-  {
-    label: "кейсы",
-    link: "#"
-  },
-  {
-    label: "FaQ",
-    link: "#"
-  },
-  {
-    label: "Контакты",
-    link: "#"
-  }
-]
+import { data } from "@/data/menu.data";
 
 const Menu = () => {
   return (
