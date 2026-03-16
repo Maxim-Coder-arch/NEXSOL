@@ -27,12 +27,12 @@ const About = () => {
               initial={{y: 50, opacity: 0}}
               animate={show ? {y: 0, opacity: 1} : {}}
               transition={{duration: .5, delay: 1}}
-            >Мы не волшебники, </motion.span>
+            >nexsol - команда</motion.span>
             <motion.span
               initial={{y: 50, opacity: 0}}
               animate={show ? {y: 0, opacity: 1} : {}}
               transition={{duration: .5, delay: .8}}
-            >мы системные инженеры</motion.span>
+            >системных специалистов</motion.span>
           </div>
           
           <motion.div 
@@ -52,7 +52,7 @@ const About = () => {
               className="about-our-action-block"
             >
               <div className="about-our-icon business" />
-              <span className="highlight">Продвижение вашего бизнеса</span>
+              <span className="highlight">Помощь в продвижении вашего бизнеса</span>
             </motion.div>
             <motion.div 
               initial={{y: 50, opacity: 0}}
@@ -61,7 +61,7 @@ const About = () => {
               className="about-our-action-block"
             >
               <div className="about-our-icon strategy" />
-              <span>Индивидуальные стратегии</span>
+              <span>Разрабока индивидуальных стратегий</span>
             </motion.div>
             <motion.div 
               initial={{y: 50, opacity: 0}}
@@ -70,7 +70,7 @@ const About = () => {
               className="about-our-action-block"
             >
               <div className="about-our-icon landing"/>
-              <span>Разработка лендингов</span>
+              <span>Разработка сайтов и проектирование роадмапов</span>
             </motion.div>
           </div>
         </div>

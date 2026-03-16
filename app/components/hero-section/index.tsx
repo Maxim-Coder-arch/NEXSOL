@@ -31,7 +31,7 @@ const HeroSection = () => {
             duration: .5,
             delay: .8
           }}
-          >NEXSOL</motion.span>
+          >NEXSOL - </motion.span>
           <motion.span
           initial="initial"
           animate="animate"
@@ -40,7 +40,7 @@ const HeroSection = () => {
             duration: .5,
             delay: .6
           }}
-          >системы,</motion.span>
+          >система,</motion.span>
           <motion.span
           initial="initial"
           animate="animate"
@@ -49,7 +49,7 @@ const HeroSection = () => {
             duration: .5,
             delay: .4
           }}
-          >приносящие клиентов</motion.span>
+          >приносящая успех бизнесу</motion.span>
         </div>
         <motion.div 
         variants={fadeUp}
@@ -60,7 +60,7 @@ const HeroSection = () => {
           delay: .2
         }}
         className="hero-subtitle">
-          <span>NEXSOL — это стратегия, сайты и реклама для сферы услуг. Мы не просто делаем красивенько. Мы строим прозрачную систему, которая работает 24/7 и приносит заявки даже когда вы спите.</span>
+          <span>NEXSOL — это стратегия, сайты, роадмапы и реклама для сферы услуг. Мы строим прозрачную систему, которая работает 24/7 и приносит клиентов вашему бизнесу</span>
         </motion.div>
         <motion.a 
         initial="initial"

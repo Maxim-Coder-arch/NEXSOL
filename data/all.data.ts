@@ -2,19 +2,19 @@ import { AllProps } from "@/types/all.type.data";
 
 export const data: AllProps[] = [
   {
-    title: "Более 20",
-    description: "Успешных клиентов"
+    title: "20+",
+    description: "реализованных проектов"
   },
   {
-    title: "7 специалистов",
-    description: "В нашей команде"
+    title: "7",
+    description: "экспертов в команде"
   },
   {
-    title: "Stack",
-    description: "У нас профессионалы своего дела"
+    title: "100%",
+    description: "средняя занятость команды"
   },
   {
-    title: "+30 клиентов",
-    description: "Принесли одному бизнесу"
+    title: "300%",
+    description: "рост клиентов у одного проекта"
   },
 ]

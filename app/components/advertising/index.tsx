@@ -26,7 +26,7 @@ const Advertising = () => {
           duration: .5
         }}
         className="advertising-title">
-          <span>NEXSOL создан, чтобы <strong>навести порядок</strong></span>
+          <span>Мы наведем <strong>порядок</strong> в вашем бизнесе</span>
         </motion.div>
         <div className="advertising-content-block">
           {

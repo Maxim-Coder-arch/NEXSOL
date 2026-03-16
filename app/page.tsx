@@ -4,6 +4,7 @@ import All from "./components/all";
 import Cases from "./components/cases/cases";
 import Faq from "./components/faq";
 import HeroSection from "./components/hero-section";
+import LeadForm from "./components/leadForm/leadForm";
 import OurEcosystem from "./components/our-ecosystem";
 import StagesOfWork from "./components/stagesOfWork";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <All />
       <Cases />
       <Faq />
+      <LeadForm />
     </main>
   );
 }
