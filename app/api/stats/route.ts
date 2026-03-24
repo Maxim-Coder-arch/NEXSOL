@@ -1,7 +1,7 @@
+export const dynamic = "force-static";
+
 import { NextResponse } from 'next/server';
 import { VisitorModel } from '@/lib/mongodb/models/visitor';
-
-export const dynamic = "force-static";
 
 export async function GET() {
   try {
@@ -16,7 +16,6 @@ export async function GET() {
   }
 }
 
-// Опционально: очистка старых данных (например, раз в месяц)
 export async function DELETE() {
   try {
     const threeMonthsAgo = new Date();
@@ -28,7 +27,7 @@ export async function DELETE() {
     });
     
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Cleanup failed' },
       { status: 500 }
