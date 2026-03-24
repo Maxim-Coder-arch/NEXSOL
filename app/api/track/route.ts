@@ -1,12 +1,13 @@
-// app/api/track/route.ts
 import { NextResponse } from 'next/server';
 import { VisitorModel } from '@/lib/mongodb/models/visitor';
+
+export const dynamic = "force-static";
 
 export async function POST(req: Request) {
   try {
     const { visitorId, page, referrer, userAgent } = await req.json();
     
-    const dateKey = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    const dateKey = new Date().toISOString().split('T')[0];
     
     await VisitorModel.track({
       visitorId,

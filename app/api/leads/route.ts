@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { LeadModel } from '@/lib/mongodb/models/lead';
 
+export const dynamic = "force-static";
+
 export async function POST(request: Request) {
   try {
     const { name, email, contact, message } = await request.json();
