@@ -276,10 +276,6 @@
       @include font(1rem, 500);
       cursor: pointer;
       transition: all 0.2s ease;
-
-      &:hover {
-        background: darken($gold, 10%);
-      }
     }
   }
 }
