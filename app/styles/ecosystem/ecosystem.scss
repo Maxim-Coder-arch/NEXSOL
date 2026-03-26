@@ -121,7 +121,11 @@
     background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.03), transparent 80%);
     pointer-events: none;
   }
-  
+  &:hover {
+    .our-ecosystem-card-label {
+      color: $gold;
+    }
+  }
 }
 
 .our-ecosystem-card-header {

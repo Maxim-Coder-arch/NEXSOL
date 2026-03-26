@@ -5,18 +5,14 @@ import { usePathname } from 'next/navigation';
 
 export const Tracker = () => {
   const pathname = usePathname();
-
   useEffect(() => {
     const trackVisit = async () => {
-      // Получаем или создаем visitorId
       let visitorId = localStorage.getItem('visitorId');
-      
       if (!visitorId) {
         visitorId = crypto.randomUUID?.() || Math.random().toString(36).substring(2);
         localStorage.setItem('visitorId', visitorId);
       }
 
-      // Не трекаем админку (чтобы не засорять статистику)
       if (pathname.startsWith('/admin') || pathname.startsWith('/dashboard')) {
         return;
       }

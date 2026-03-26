@@ -41,7 +41,7 @@ const About = () => {
             transition={{duration: .5, delay: .6}}
             className="about-description"
           >
-            <span>В малом бизнесе слишком много хаоса. Вы разрываетесь между сайтом, клиентами и попытками настроить рекламу. А результат всё равно непредсказуем?</span>
+            <span>В малом бизнесе слишком много хаоса. Вы разрываетесь между сайтом, клиентами и попытками настроить рекламу. А результат всё равно непредсказуем? Мы поможем вам: </span>
           </motion.div>
           
           <div className="about-our-actions">
@@ -61,7 +61,7 @@ const About = () => {
               className="about-our-action-block"
             >
               <div className="about-our-icon strategy" />
-              <span>Разрабока индивидуальных стратегий</span>
+              <span>Настройка рекламы и аналитики</span>
             </motion.div>
             <motion.div 
               initial={{y: 50, opacity: 0}}
@@ -70,7 +70,7 @@ const About = () => {
               className="about-our-action-block"
             >
               <div className="about-our-icon landing"/>
-              <span>Разработка сайтов и проектирование роадмапов</span>
+              <span>Разработка сайтов и систем управления сайтами</span>
             </motion.div>
           </div>
         </div>

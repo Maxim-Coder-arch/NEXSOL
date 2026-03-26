@@ -60,7 +60,7 @@ const HeroSection = () => {
           delay: .2
         }}
         className="hero-subtitle">
-          <span>NEXSOL — это стратегия, сайты, роадмапы и реклама для сферы услуг. Мы строим прозрачную систему, которая работает 24/7 и приносит клиентов вашему бизнесу</span>
+          <span>NEXSOL — это разработка сайтов, аналитика и реклама для бизнеса. Мы строим прозрачную систему, которая работает 24/7 и приносит клиентов вашему бизнесу</span>
         </motion.div>
         <motion.a 
         initial="initial"
@@ -69,7 +69,7 @@ const HeroSection = () => {
         transition={{
           duration: .5
         }}
-        href="#" 
+        href="#lead-form" 
         className="button-action">Обсудить проект</motion.a>
       </div>
       <motion.div 

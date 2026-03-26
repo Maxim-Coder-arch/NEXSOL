@@ -14,7 +14,7 @@ export const data: AllProps[] = [
     description: "средняя занятость команды"
   },
   {
-    title: "300%",
+    title: "100%",
     description: "рост клиентов у одного проекта"
   },
 ]
