@@ -1,135 +1,142 @@
 'use client';
 
 import { motion, useInView } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import "../../styles/about/about.scss";
-import { useRef } from "react";
-import { reviews } from "@/data/reviews.data";
+import ReviewModal from "../reviewModal";
+
+interface Review {
+  _id: string;
+  name: string;
+  role: string;
+  text: string;
+  rating: number;
+  createdAt: Date;
+}
 
 const About = () => {
   const toggle = useRef(null);
-  const show = useInView(toggle, {once: true, amount: .3});
+  const show = useInView(toggle, { once: true, amount: 0.3 });
+  const [isOpen, setIsOpen] = useState(false);
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Загружаем отзывы из базы данных
+    const fetchReviews = async () => {
+      try {
+        const response = await fetch('/api/reviews?approved=true');
+        const data = await response.json();
+        if (data.success) {
+          setReviews(data.reviews.slice(0, 3)); // Показываем только первые 3
+        }
+      } catch (error) {
+        console.error('Ошибка при загрузке отзывов:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchReviews();
+  }, []);
 
   return (
-    <section id="about">
-      <div className="about" ref={toggle}>
-        <div className="about-content">
-          <motion.div
-            initial={{y: 50, opacity: 0}}
-            animate={show ? {y: 0, opacity: 1} : {}}
-            transition={{duration: .5, delay: 1.2}}
-            className="about-block-title"
-          >
-            <span>О нас</span>
-          </motion.div>
-          
-          <div className="about-content-title">
-            <motion.span
-              initial={{y: 50, opacity: 0}}
-              animate={show ? {y: 0, opacity: 1} : {}}
-              transition={{duration: .5, delay: 1}}
-            >nexsol - команда</motion.span>
-            <motion.span
-              initial={{y: 50, opacity: 0}}
-              animate={show ? {y: 0, opacity: 1} : {}}
-              transition={{duration: .5, delay: .8}}
-            >системных специалистов</motion.span>
-          </div>
-          
-          <motion.div 
-            initial={{y: 50, opacity: 0}}
-            animate={show ? {y: 0, opacity: 1} : {}}
-            transition={{duration: .5, delay: .6}}
-            className="about-description"
-          >
-            <span>В малом бизнесе слишком много хаоса. Вы разрываетесь между сайтом, клиентами и попытками настроить рекламу. А результат всё равно непредсказуем? Мы поможем вам: </span>
-          </motion.div>
-          
-          <div className="about-our-actions">
-            <motion.div 
-              initial={{y: 50, opacity: 0}}
-              animate={show ? {y: 0, opacity: 1} : {}}
-              transition={{duration: .5, delay: .4}}
-              className="about-our-action-block"
+    <>
+      <ReviewModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <section id="about">
+        <div className="about" ref={toggle}>
+          <div className="about__container">
+            <motion.div
+              className="about__header"
+              initial={{ opacity: 0, y: 30 }}
+              animate={show ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
             >
-              <div className="about-our-icon business" />
-              <span className="highlight">Помощь в продвижении вашего бизнеса</span>
+              <span className="about__label">О нас</span>
+              <h2 className="about__title">
+                nexsol — команда<br />
+                <span>системных специалистов</span>
+              </h2>
+              <p className="about__description">
+                В малом бизнесе слишком много хаоса. Вы разрываетесь между сайтом, клиентами и попытками настроить рекламу. А результат всё равно непредсказуем?
+              </p>
             </motion.div>
-            <motion.div 
-              initial={{y: 50, opacity: 0}}
-              animate={show ? {y: 0, opacity: 1} : {}}
-              transition={{duration: .5, delay: .2}}
-              className="about-our-action-block"
+
+            <div className="about__services">
+              <div className="about__service-item">
+                <div className="about__service-icon business" />
+                <span className="about__service-text">Помощь в продвижении вашего бизнеса</span>
+              </div>
+              <div className="about__service-item">
+                <div className="about__service-icon strategy" />
+                <span className="about__service-text">Настройка рекламы и аналитики</span>
+              </div>
+              <div className="about__service-item">
+                <div className="about__service-icon landing" />
+                <span className="about__service-text">Разработка сайтов и систем управления</span>
+              </div>
+            </div>
+
+            <motion.div
+              className="about__reviews"
+              initial={{ opacity: 0, y: 40 }}
+              animate={show ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="about-our-icon strategy" />
-              <span>Настройка рекламы и аналитики</span>
-            </motion.div>
-            <motion.div 
-              initial={{y: 50, opacity: 0}}
-              animate={show ? {y: 0, opacity: 1} : {}}
-              transition={{duration: .5}}
-              className="about-our-action-block"
-            >
-              <div className="about-our-icon landing"/>
-              <span>Разработка сайтов и систем управления сайтами</span>
+              <div className="about__reviews-header">
+                <h3>Нас рекомендуют</h3>
+                <button className="about__reviews-link" onClick={() => setIsOpen(prev => !prev)}>
+                  Все отзывы
+                  <span className="about__reviews-arrow">→</span>
+                </button>
+              </div>
+
+              <div className="about__reviews-grid">
+                {loading ? (
+                  // Скелетон загрузки
+                  <>
+                    {[1, 2, 3].map((_, index) => (
+                      <div key={index} className="about__review-card skeleton">
+                        <div className="skeleton-rating"></div>
+                        <div className="skeleton-text"></div>
+                        <div className="skeleton-author"></div>
+                      </div>
+                    ))}
+                  </>
+                ) : reviews.length > 0 ? (
+                  reviews.map((review, index) => (
+                    <motion.div
+                      key={review._id}
+                      className="about__review-card"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={show ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                      whileHover={{ y: -4 }}
+                    >
+                      <div className="about__review-rating">
+                        {[...Array(5)].map((_, i) => (
+                          <span key={i} className={`star ${i < review.rating ? 'filled' : ''}`}>★</span>
+                        ))}
+                      </div>
+                      <p className="about__review-text">{review.text}</p>
+                      <div className="about__review-author">
+                        <span className="about__review-name">{review.name}</span>
+                        <span className="about__review-role">{review.role}</span>
+                      </div>
+                    </motion.div>
+                  ))
+                ) : (
+                  <div className="about__reviews-empty">
+                    <p>Пока нет отзывов. Станьте первым!</p>
+                  </div>
+                )}
+              </div>
             </motion.div>
           </div>
         </div>
-        <motion.div 
-          className="about-reviews"
-          initial={{ opacity: 0, x: 50 }}
-          animate={show ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="about-reviews-title">
-            <h3>Нас рекомендуют</h3>
-            <div className="about-reviews-stats">
-              <span>более 20 клиентов</span>
-              <span>⭐ 5.0 средняя оценка</span>
-            </div>
-          </div>
-
-          <div className="about-reviews-grid">
-            {reviews.map((review, index) => (
-              <motion.div 
-                key={index}
-                className="review-card"
-                initial={{ opacity: 0, y: 30 }}
-                animate={show ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.6 + index * 0.2 }}
-                whileHover={{ 
-                  y: -5,
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
-                  borderColor: "rgba(242, 201, 76, 0.3)"
-                }}
-              >
-                <div className="review-card-header">
-                  <div className="review-card-avatar">
-                    <div className="review-avatar"></div>
-                  </div>
-                  <div className="review-card-info">
-                    <span className="review-card-name">{review.name}</span>
-                    <span className="review-card-role">{review.role}</span>
-                  </div>
-                </div>
-                
-                <p className="review-card-text">{review.text}</p>
-                
-                <div className="review-card-rating">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className={`star ${i < review.rating ? 'filled' : ''}`}>
-                      ★
-                    </span>
-                  ))}
-                </div>
-
-                <div className="review-card-quote">&#44;</div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
+      </section>
+    </>
+  );
+};
 
 export default About;

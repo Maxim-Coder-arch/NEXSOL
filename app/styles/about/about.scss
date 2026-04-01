@@ -2,288 +2,236 @@
 @use "../mixins/mixins.scss" as *;
 
 .about {
-  width: 100vw;
-  min-height: 100vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  column-gap: 60px;
-  padding: {
-    left: 20px;
-    right: 20px;
-  };
-}
-
-.about-content {
-  display: flex;
-  flex-direction: column;
-  row-gap: 30px;
-  flex: 1;
-}
-
-.about-block-title {
-  border: solid 1px $gold;
-  width: fit-content;
-  padding: 5px 20px;
-  border-radius: 20px;
-  background-color: #f2c84c1a;
-  box-shadow: 0px 0px 10px #f2c84c6c;
+  width: 100%;
+  padding: 5rem 2rem;
   
-  & span {
+  @media (min-width: 1200px) {
+    padding: 6rem 4rem;
+  }
+  
+  &__container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  &__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  &__label {
+    display: inline-block;
+    @include font(0.8rem, 400);
     color: $gold;
-    @include font(1rem, 100);
-  }
-}
-
-.about-content-title {
-  display: flex;
-  flex-direction: column;
-  
-  & span {
-    @include font(4rem, 900);
-    line-height: 60px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba($gold, 0.3);
+    padding: 0.3rem 1rem;
   }
   
-  & span:first-child {
+  &__title {
+    @include font(3rem, 700);
     color: $white;
-  }
-  
-  & span:last-child {
-    color: $gray;
-  }
-}
-
-.about-description {
-  max-width: 500px;
-  
-  & span {
-    color: $gray;
-    @include font(1rem, 100);
-  }
-}
-
-.about-our-actions {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-}
-
-.about-our-action-block {
-  display: flex;
-  column-gap: 20px;
-  align-items: center;
-  
-  & span {
-    @include font(1.1rem, 600);
-    color: $white;
-  }
-}
-
-.about-our-icon {
-  width: 30px;
-  height: 30px;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.business {
-  background-image: url("/icons/business.png");
-}
-
-.strategy {
-  background-image: url("/icons/strategy.png");
-}
-
-.landing {
-  background-image: url("/icons/website.png");
-}
-
-.highlight {
-  background-color: $gold;
-  color: $black !important;
-  padding: 0 5px;
-}
-
-/* ===== НОВЫЙ БЛОК С ОТЗЫВАМИ ===== */
-.about-reviews {
-  width: 45%;
-  background-color: rgba($light-black, 0.3);
-  border: 1px solid rgba($border-white, 0.1);
-  border-radius: 24px;
-  padding: 2rem;
-  backdrop-filter: blur(10px);
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: "";
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 200px;
-    height: 200px;
-    background-color: rgba($gold, 0.1);
-    border-radius: 50%;
-    filter: blur(80px);
-    z-index: 0;
-  }
-}
-
-.about-reviews-title {
-  margin-bottom: 2rem;
-  position: relative;
-  z-index: 1;
-  
-  & h3 {
-    @include font(2rem, 700);
-    color: $white;
-    margin-bottom: 0.5rem;
-  }
-  
-  .about-reviews-stats {
-    display: flex;
-    gap: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
     
-    & span {
-      @include font(0.9rem, 300);
+    span {
       color: $gray;
-      background-color: rgba($border-white, 0.05);
-      padding: 0.3rem 1rem;
-      border-radius: 20px;
+    }
+    
+    @media (min-width: 768px) {
+      font-size: 4rem;
+    }
+  }
+  
+  &__description {
+    max-width: 700px;
+    margin: 0 auto;
+    @include font(1rem, 300);
+    color: $gray;
+    line-height: 1.6;
+  }
+  
+  &__services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 5rem;
+    
+    @media (min-width: 768px) {
+      flex-wrap: nowrap;
+    }
+  }
+  
+  &__service-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba($white, 0.03);
+    padding: 0.8rem 1.5rem;
+    border: 1px solid rgba($border-white, 0.05);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      border-color: rgba($gold, 0.3);
+      transform: translateY(-2px);
+    }
+  }
+  
+  &__service-icon {
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    &.business {
+      background-image: url("/icons/business.png");
+    }
+    &.strategy {
+      background-image: url("/icons/strategy.png");
+    }
+    &.landing {
+      background-image: url("/icons/website.png");
+    }
+  }
+  
+  &__service-text {
+    @include font(0.9rem, 400);
+    color: $white;
+    white-space: nowrap;
+    
+    @media (max-width: 768px) {
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+  }
+  
+  &__reviews {
+    background: rgba($light-black, 0.4);
+    border: 1px solid rgba($border-white, 0.05);
+    padding: 2.5rem;
+    
+    @media (min-width: 768px) {
+      padding: 3rem;
+    }
+  }
+  
+  &__reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    
+    h3 {
+      @include font(1.5rem, 500);
+      color: $white;
+      margin: 0;
+    }
+  }
+  
+  &__reviews-link {
+    @include font(0.9rem, 400);
+    color: $gold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s ease;
+    cursor: pointer;
+    
+    &:hover {
+      gap: 0.75rem;
+    }
+  }
+  
+  &__reviews-arrow {
+    transition: transform 0.3s ease;
+  }
+  
+  &__reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  &__review-card {
+    background: rgba($black, 0.4);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba($border-white, 0.05);
+    
+    &:hover {
+      border-color: rgba($gold, 0.2);
+      background: rgba($black, 0.6);
+    }
+  }
+  
+  &__review-rating {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+    
+    .star {
+      font-size: 0.9rem;
+      color: rgba($gray, 0.3);
       
-      &:first-child {
-        border-left: 2px solid $gold;
+      &.filled {
+        color: $gold;
       }
     }
   }
-}
-
-.about-reviews-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-.review-card {
-  background-color: rgba($black, 0.5);
-  border: 1px solid rgba($border-white, 0.1);
-  border-radius: 16px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
   
-  &:hover {
-    background-color: rgba($black, 0.7);
+  &__review-text {
+    @include font(0.9rem, 300);
+    color: $gray;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    font-style: italic;
   }
-}
-
-.review-card-header {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.review-card-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
   
-  & span {
-    @include font(1.5rem, 600);
+  &__review-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    border-top: 1px solid rgba($border-white, 0.05);
+    padding-top: 0.75rem;
+  }
+  
+  &__review-name {
+    @include font(0.9rem, 500);
     color: $white;
   }
   
-  & img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-}
-
-.review-card-info {
-  display: flex;
-  flex-direction: column;
-  
-  .review-card-name {
-    @include font(1.1rem, 600);
-    color: $white;
-  }
-  
-  .review-card-role {
-    @include font(0.8rem, 300);
+  &__review-role {
+    @include font(0.75rem, 300);
     color: $gray;
   }
 }
 
-.review-card-text {
-  @include font(0.95rem, 300);
-  color: $gray;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  position: relative;
-  z-index: 1;
-}
-
-.review-card-rating {
-  display: flex;
-  gap: 0.2rem;
-  
-  .star {
-    color: rgba($gray, 0.3);
-    font-size: 1.2rem;
-    
-    &.filled {
-      color: $gold;
-    }
-  }
-}
-
-.review-card-quote {
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-  @include font(5rem, 900);
-  color: rgba($gold, 0.1);
-  font-family: serif;
-  z-index: 0;
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .about {
-    flex-direction: column;
-    row-gap: 40px;
-    padding: 40px 20px;
+    padding: 3rem 1rem;
   }
   
-  .about-content {
+  .about__title {
+    font-size: 2rem;
+  }
+  
+  .about__service-item {
     width: 100%;
+    justify-content: center;
   }
   
-  .about-reviews {
-    width: 100%;
+  .about__service-text {
+    white-space: normal;
   }
-  
-  .about-content-title span {
-    font-size: 3rem;
-    line-height: 50px;
-  }
-}
-
-.review-avatar {
-  width: 100%;
-  height: 100%;
-  background-image: url("/icons/avatar.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
 }

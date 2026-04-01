@@ -5,10 +5,10 @@ export interface Lead {
   _id?: ObjectId;
   name: string;
   email: string;
-  contact: string; // ссылка на соцсеть
-  message?: string; // дополнительное сообщение (опционально)
-  status: 'new' | 'contacted' | 'converted' | 'lost'; // статус заявки
-  source: string; // откуда пришел (например, 'website')
+  contact: string;
+  message?: string;
+  status: 'new' | 'contacted' | 'converted' | 'lost';
+  source: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -24,7 +24,7 @@ export class LeadModel {
     const collection = await this.getCollection();
     const now = new Date();
     
-    const lead = {
+    const lead: Lead = {
       ...data,
       status: 'new',
       createdAt: now,

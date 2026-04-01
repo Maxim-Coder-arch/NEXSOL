@@ -36,7 +36,11 @@
     }
   }
 }
-
+.cases-center {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
 .cases-block {
   background-color: $light-background;
   width: 100%;
@@ -66,7 +70,6 @@
 .cases-item {
   width: calc((100% / 3) - 25px);
   min-width: 380px;
-  max-width: 450px;
   padding: 16px;
   border: 1px solid rgba($border-white, 0.08);
   background: linear-gradient(145deg, #1f1f1f, #1a1a1a);

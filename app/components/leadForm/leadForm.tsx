@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from "next/image";
 import "../../styles/lead-form/leadForm.scss";
 
 export default function LeadForm() {
@@ -39,7 +40,7 @@ export default function LeadForm() {
         setStatus('error');
         setErrorText(data.error || 'Что-то пошло не так');
       }
-    } catch (err) {
+    } catch {
       setStatus('error');
       setErrorText('Ошибка отправки');
     }
@@ -51,15 +52,24 @@ export default function LeadForm() {
   };
 
   return (
-    <>
-    <section id='lead-form'>
+    <section id="lead-form" className="lead-form-section">
+      <div className="lead-form-container">
+        <div className="lead-form__image">
+          <Image 
+            src="/images/business.jpg" 
+            alt="Свяжитесь с нами"
+            width={600}
+            height={500}
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
+
         <div className="lead-form">
           <div className="lead-form__header">
             <h3>Свяжитесь с нами</h3>
             <p>Выберите удобный способ связи</p>
           </div>
 
-          {/* Быстрые контакты */}
           <div className="lead-form__quick">
             <a 
               href="https://t.me/..." 
@@ -146,74 +156,71 @@ export default function LeadForm() {
             </AnimatePresence>
           </form>
         </div>
+      </div>
 
-        {/* Модальное окно после отправки */}
-        <AnimatePresence>
-          {showModal && (
-            <>
+      <AnimatePresence>
+        {showModal && (
+          <>
+            <motion.div 
+              className="lead-form__modal-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeModal}
+            >
               <motion.div 
-                className="lead-form__modal-overlay"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={closeModal}
+                className="lead-form__modal"
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                transition={{ duration: 0.3 }}
               >
-
-                <motion.div 
-                  className="lead-form__modal"
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <button className="lead-form__modal-close" onClick={closeModal}>×</button>
+                <button className="lead-form__modal-close" onClick={closeModal}>×</button>
+                
+                <div className="lead-form__modal-content">
+                  <h2>Заявка принята</h2>
                   
-                  <div className="lead-form__modal-content">
-                    <h2>Заявка принята</h2>
-                    
-                    <div className="lead-form__modal-data">
-                      <div className="lead-form__modal-row">
-                        <span className="lead-form__modal-label">Имя:</span>
-                        <span className="lead-form__modal-value">{submittedData.name}</span>
-                      </div>
-                      <div className="lead-form__modal-row">
-                        <span className="lead-form__modal-label">Email:</span>
-                        <span className="lead-form__modal-value">{submittedData.email}</span>
-                      </div>
-                      <div className="lead-form__modal-row">
-                        <span className="lead-form__modal-label">Контакт:</span>
-                        <span className="lead-form__modal-value">{submittedData.contact}</span>
-                      </div>
-                      {submittedData.message && (
-                        <div className="lead-form__modal-row">
-                          <span className="lead-form__modal-label">Сообщение:</span>
-                          <span className="lead-form__modal-value">{submittedData.message}</span>
-                        </div>
-                      )}
+                  <div className="lead-form__modal-data">
+                    <div className="lead-form__modal-row">
+                      <span className="lead-form__modal-label">Имя:</span>
+                      <span className="lead-form__modal-value">{submittedData.name}</span>
                     </div>
-
-                    <p className="lead-form__modal-message">
-                      Мы свяжемся с вами в течение рабочего дня.
-                    </p>
-
-                    <p className="lead-form__modal-note">
-                      Если вам нужно связаться с нами прямо сейчас, напишите нам в 
-                      <a href="https://t.me/..." target="_blank" rel="noopener noreferrer"> Telegram </a> 
-                      или 
-                      <a href="https://vk.com/..." target="_blank" rel="noopener noreferrer"> VKontakte</a>.
-                    </p>
-
-                    <button className="lead-form__modal-btn" onClick={closeModal}>
-                      Закрыть
-                    </button>
+                    <div className="lead-form__modal-row">
+                      <span className="lead-form__modal-label">Email:</span>
+                      <span className="lead-form__modal-value">{submittedData.email}</span>
+                    </div>
+                    <div className="lead-form__modal-row">
+                      <span className="lead-form__modal-label">Контакт:</span>
+                      <span className="lead-form__modal-value">{submittedData.contact}</span>
+                    </div>
+                    {submittedData.message && (
+                      <div className="lead-form__modal-row">
+                        <span className="lead-form__modal-label">Сообщение:</span>
+                        <span className="lead-form__modal-value">{submittedData.message}</span>
+                      </div>
+                    )}
                   </div>
-                </motion.div>
+
+                  <p className="lead-form__modal-message">
+                    Мы свяжемся с вами в течение рабочего дня.
+                  </p>
+
+                  <p className="lead-form__modal-note">
+                    Если вам нужно связаться с нами прямо сейчас, напишите нам в 
+                    <a href="https://t.me/..." target="_blank" rel="noopener noreferrer"> Telegram </a> 
+                    или 
+                    <a href="https://vk.com/..." target="_blank" rel="noopener noreferrer"> VKontakte</a>.
+                  </p>
+
+                  <button className="lead-form__modal-btn" onClick={closeModal}>
+                    Закрыть
+                  </button>
+                </div>
               </motion.div>
-              
-            </>
-          )}
-        </AnimatePresence>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
-    </>
   );
 }
