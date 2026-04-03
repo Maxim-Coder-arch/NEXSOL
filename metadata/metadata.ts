@@ -19,9 +19,9 @@ export const metaData: Metadata = {
   authors: [{ name: 'NEXSOL' }],
   creator: 'NEXSOL',
   publisher: 'NEXSOL',
-  verification: {
-    google: "yZ7mobjVmC0SAY0BBIJ2r55AR8rmO2MZUu9dpaAx8r0",
-  },
+  // verification: {
+  //   google: "yZ7mobjVmC0SAY0BBIJ2r55AR8rmO2MZUu9dpaAx8r0",
+  // },
   openGraph: {
     title: 'NEXSOL | стратегия, сайты и реклама',
     description: 'Строим системы, которые приносят клиентов. Стратегия, сайты и реклама для малого бизнеса.',
