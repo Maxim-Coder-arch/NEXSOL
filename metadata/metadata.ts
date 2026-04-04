@@ -21,6 +21,7 @@ export const metaData: Metadata = {
   publisher: 'NEXSOL',
   verification: {
     yandex: "e4850ac9ddb400c6",
+    google: "7yQsWaXxXlqPgDaI5jZDYEusnU2YfWXJlNccOZ72K2E",
   },
   openGraph: {
     title: 'NEXSOL | стратегия, сайты и реклама',
