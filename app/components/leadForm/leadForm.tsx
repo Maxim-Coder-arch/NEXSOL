@@ -67,25 +67,17 @@ export default function LeadForm() {
         <div className="lead-form">
           <div className="lead-form__header">
             <h3>Свяжитесь с нами</h3>
-            <p>Выберите удобный способ связи</p>
+            <p>в ВК мы быстрее ответим😊</p>
           </div>
 
           <div className="lead-form__quick">
             <a 
-              href="https://t.me/..." 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="lead-form__quick-btn lead-form__quick-btn--tg"
-            >
-              Telegram
-            </a>
-            <a 
-              href="https://vk.com/..." 
+              href="https://vk.com/im/convo/-237371792?entrypoint=community_page&tab=all" 
               target="_blank" 
               rel="noopener noreferrer"
               className="lead-form__quick-btn lead-form__quick-btn--vk"
             >
-              VKontakte
+              ВКонтакте
             </a>
           </div>
 

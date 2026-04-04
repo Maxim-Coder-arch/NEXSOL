@@ -42,22 +42,31 @@ const Footer = () => {
           >
             <h3>Контакты</h3>
             <motion.a 
-              href="mailto:hello@nexsol.ru"
+              href="mailto:solidnexus@yandex.ru"
               className="footer-contact-item"
               whileHover={{ x: 5, color: "#f2c94c" }}
               transition={{ duration: 0.2 }}
             >
-              hello@nexsol.ru
+              solidnexus@yandex.ru
             </motion.a>
             
             <motion.a 
-              href="https://t.me/+vn6d9rXnOMczN2Ni"
+              href="https://vk.com/im/convo/-237371792?entrypoint=community_page&tab=all"
               target="_blank"
               className="footer-contact-item"
               whileHover={{ x: 5, color: "#f2c94c" }}
               transition={{ duration: 0.2 }}
             >
               Вконтакте
+            </motion.a>
+            <motion.a 
+              href="https://t.me/solid_nexus"
+              target="_blank"
+              className="footer-contact-item"
+              whileHover={{ x: 5, color: "#f2c94c" }}
+              transition={{ duration: 0.2 }}
+            >
+              Телеграм
             </motion.a>
           </motion.div>
           <motion.div 
@@ -78,12 +87,6 @@ const Footer = () => {
                     backgroundColor: "rgba(242, 201, 76, 0.2)"
                   }}
                   transition={{ duration: 0.2 }}
-                  onClick={(e) => {
-                    if (social.link === "#") {
-                      e.preventDefault();
-                      alert(`${social.name} появится скоро!`);
-                    }
-                  }}
                 >
                   <span>{social.name}</span>
                 </motion.a>
