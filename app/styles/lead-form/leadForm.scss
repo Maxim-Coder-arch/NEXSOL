@@ -69,6 +69,40 @@
     margin-bottom: 1.5rem;
   }
 
+  &__consent {
+    margin-top: 10px;
+    & label {
+      display: flex;
+      column-gap: 10px;
+      align-items: center;
+      @include font(0.9rem, 300);
+      & input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        padding: 0;
+        background-color: $black;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        &:checked {
+          &::after {
+            content: ' ✓';
+            position: absolute;
+          }
+        }
+      }
+      & span {
+        color: $border-white;
+        & a {
+          color: $blue;
+        }
+      }
+    }
+  }
+
   &__quick-btn {
     flex: 1;
     padding: 0.75rem;

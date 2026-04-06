@@ -2,6 +2,10 @@ import { MenuProps } from "@/types/type.data.menu";
 
 export const data: MenuProps[] = [
   {
+    label: "Главная",
+    link: "/"
+  },
+  {
     label: "О нас",
     link: "#about"
   },

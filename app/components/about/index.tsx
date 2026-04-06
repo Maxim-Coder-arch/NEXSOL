@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import "../../styles/about/about.scss";
 import ReviewModal from "../reviewModal";
+import Link from "next/link";
 
 interface Review {
   _id: string;
@@ -85,10 +86,10 @@ const About = () => {
             >
               <div className="about__reviews-header">
                 <h3>Нас рекомендуют</h3>
-                <button className="about__reviews-link" onClick={() => setIsOpen(prev => !prev)}>
+                <Link className="about__reviews-link" href="/pages/reviews">
                   Все отзывы
                   <span className="about__reviews-arrow">→</span>
-                </button>
+                </Link>
               </div>
 
               <div className="about__reviews-grid">

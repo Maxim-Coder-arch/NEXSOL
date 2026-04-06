@@ -23,7 +23,7 @@
     padding-right: 1rem;
     
     @media (max-width: 768px) {
-      max-height: 400px; /* фиксированная высота для списка на мобилках */
+      max-height: none; /* фиксированная высота для списка на мобилках */
       padding-right: 0;
       overflow-y: auto;
     }

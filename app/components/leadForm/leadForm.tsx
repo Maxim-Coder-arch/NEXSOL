@@ -14,6 +14,7 @@ export default function LeadForm() {
   const [errorText, setErrorText] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [submittedData, setSubmittedData] = useState({ name: '', email: '', contact: '', message: '' });
+  const [consent, setConsent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,7 +68,7 @@ export default function LeadForm() {
         <div className="lead-form">
           <div className="lead-form__header">
             <h3>Свяжитесь с нами</h3>
-            <p>в ВК мы быстрее ответим😊</p>
+            <p>Мы быстро ответим😊</p>
           </div>
 
           <div className="lead-form__quick">
@@ -78,6 +79,14 @@ export default function LeadForm() {
               className="lead-form__quick-btn lead-form__quick-btn--vk"
             >
               ВКонтакте
+            </a>
+            <a 
+              href="https://t.me/solid_nexus?direct" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="lead-form__quick-btn lead-form__quick-btn--vk"
+            >
+              Телеграм
             </a>
           </div>
 
@@ -102,7 +111,7 @@ export default function LeadForm() {
             
             <input
               type="email"
-              placeholder="Ваш email *"
+              placeholder="Ваша почта *"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -111,7 +120,7 @@ export default function LeadForm() {
             
             <input
               type="text"
-              placeholder="Ссылка на соцсеть *"
+              placeholder="Телефон или ссылка на соцсеть *"
               value={contact}
               onChange={(e) => setContact(e.target.value)}
               required
@@ -128,8 +137,9 @@ export default function LeadForm() {
             
             <button 
               type="submit" 
-              disabled={status === 'loading'}
+              disabled={status === 'loading' || !consent}
               className={status === 'loading' ? 'loading' : ''}
+              title={!consent ? "Чтобы отправить форму подтвердите ваше согласие на обработку персональных данных ниже" : "Отправить форму"}
             >
               {status === 'loading' ? 'Отправка...' : 'Отправить заявку'}
             </button>
@@ -146,6 +156,21 @@ export default function LeadForm() {
                 </motion.div>
               )}
             </AnimatePresence>
+
+            <div className="lead-form__consent">
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={consent}
+                  onChange={(e) => setConsent(e.target.checked)}
+                  required
+                />
+                <span>
+                  Я соглашаюсь на{' '}
+                  <a href="/pages/privacy">обработку персональных данных</a>
+                </span>
+              </label>
+            </div>
           </form>
         </div>
       </div>
@@ -199,9 +224,9 @@ export default function LeadForm() {
 
                   <p className="lead-form__modal-note">
                     Если вам нужно связаться с нами прямо сейчас, напишите нам в 
-                    <a href="https://t.me/..." target="_blank" rel="noopener noreferrer"> Telegram </a> 
+                    <a href="https://t.me/solid_nexus?direct" target="_blank" rel="noopener noreferrer">Телеграм</a> 
                     или 
-                    <a href="https://vk.com/..." target="_blank" rel="noopener noreferrer"> VKontakte</a>.
+                    <a href="https://vk.com/im/convo/-237371792" target="_blank" rel="noopener noreferrer">ВКонтакте</a>.
                   </p>
 
                   <button className="lead-form__modal-btn" onClick={closeModal}>

@@ -60,13 +60,22 @@ const Footer = () => {
               Вконтакте
             </motion.a>
             <motion.a 
-              href="https://t.me/solid_nexus"
+              href="https://t.me/solid_nexus?direct"
               target="_blank"
               className="footer-contact-item"
               whileHover={{ x: 5, color: "#f2c94c" }}
               transition={{ duration: 0.2 }}
             >
               Телеграм
+            </motion.a>
+            <motion.a 
+              href="https://vk.com/nexsol_company"
+              target="_blank"
+              className="footer-contact-item"
+              whileHover={{ x: 5, color: "#f2c94c" }}
+              transition={{ duration: 0.2 }}
+            >
+              Сотрудничество
             </motion.a>
           </motion.div>
           <motion.div 
