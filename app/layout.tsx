@@ -6,6 +6,7 @@ import MobileMenu from "./repetitiveComponents/mobileMenu";
 import { metaData } from "../metadata/metadata";
 import { Tracker } from "./components/Tracker";
 import Script from "next/script";
+import BannerCookie from "./banners/cookie";
 
 export const metadata: Metadata = metaData;
 
@@ -38,6 +39,7 @@ export default function RootLayout({
           `}
         </Script>
 
+        <BannerCookie />
         <Footer />
         <Tracker />
       </body>

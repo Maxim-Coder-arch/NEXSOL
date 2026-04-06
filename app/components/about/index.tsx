@@ -17,7 +17,6 @@ interface Review {
 const About = () => {
   const toggle = useRef(null);
   const show = useInView(toggle, { once: true, amount: 0.3 });
-  const [isOpen, setIsOpen] = useState(false);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
 
