@@ -3,7 +3,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import "../../styles/about/about.scss";
-import ReviewModal from "../reviewModal";
 import Link from "next/link";
 
 interface Review {
@@ -43,7 +42,6 @@ const About = () => {
 
   return (
     <>
-      <ReviewModal isOpen={isOpen} setIsOpen={setIsOpen} />
       <section id="about">
         <div className="about" ref={toggle}>
           <div className="about__container">

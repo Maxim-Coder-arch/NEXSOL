@@ -30,7 +30,6 @@ const ReviewsPage = () => {
     message: string;
   }>({ type: null, message: '' });
 
-  // Загрузка отзывов из БД
   useEffect(() => {
     const fetchReviews = async () => {
       try {
@@ -40,7 +39,7 @@ const ReviewsPage = () => {
           setReviews(data.reviews);
         }
       } catch (error) {
-        console.error('Ошибка при загрузке отзывов:', error);
+        console.log('Ошибка при загрузке отзывов:', error);
       } finally {
         setLoading(false);
       }
@@ -84,7 +83,6 @@ const ReviewsPage = () => {
           rating: 5
         });
         
-        // Скрываем сообщение через 3 секунды
         setTimeout(() => {
           setSubmitStatus({ type: null, message: '' });
         }, 3000);
@@ -108,7 +106,6 @@ const ReviewsPage = () => {
   return (
     <div className="reviews-page">
       <div className="reviews-page__container">
-        {/* Хедер */}
         <div className="reviews-page__header">
           <Link href="/" className="reviews-page__back-link">
             ← На главную
