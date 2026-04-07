@@ -105,10 +105,10 @@ const MobileMenu = () => {
               transition={{ duration: 0.4, delay: 0.4 }}
             >
               <div className="mobile-menu-contacts">
-                <a href="mailto:hello@nexsol.ru" className="mobile-menu-contact">
-                  <span>hello@nexsol.ru</span>
+                <a href="mailto:solidnexus@yandex.ru" className="mobile-menu-contact">
+                  <span>solidnexus@yandex.ru</span>
                 </a>
-                <a href="https://t.me/..." className="mobile-menu-contact">
+                <a href="https://t.me/solid_nexus?direct" className="mobile-menu-contact">
                   <span>Telegram</span>
                 </a>
               </div>

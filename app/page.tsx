@@ -7,6 +7,7 @@ import HeroSection from "./components/hero-section";
 import LeadForm from "./components/leadForm/leadForm";
 import OurEcosystem from "./components/our-ecosystem";
 import StagesOfWork from "./components/stagesOfWork";
+import Loader from "./repetitiveComponents/loader/loader";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Cases />
       <Faq />
       <LeadForm />
+      <Loader />
     </main>
   );
 }

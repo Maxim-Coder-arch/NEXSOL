@@ -98,6 +98,15 @@ const Footer = () => {
             >
               Сотрудничество
             </motion.a>
+            <motion.a 
+              href="https://vk.com/nexsol_company"
+              target="_blank"
+              className="footer-contact-item"
+              whileHover={{ x: 5, color: "#f2c94c" }}
+              transition={{ duration: 0.2 }}
+            >
+              Сообщить об ошибке
+            </motion.a>
           </motion.div>
 
           <motion.div 

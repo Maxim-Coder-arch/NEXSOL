@@ -1,19 +1,27 @@
 'use client';
+import { useEffect, useState } from "react";
 import "../../styles/hero-section/heroSection.scss";
 import { motion } from "framer-motion";
 
 
 const HeroSection = () => {
+  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
   const fadeUp = {
     initial: { y: 50, opacity: 0 },
     animate: { y: 0, opacity: 1 }
   };
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsAnimationComplete(true);
+    }, 1500);
+    return () => clearTimeout(timeout);
+  }, []);
   return (
     <div className="hero-section">
       <div className="hero-content">
         <motion.div 
         initial="initial"
-        animate="animate"
+        animate={isAnimationComplete ? "animate" : ""}
         variants={fadeUp}
         transition={{
           duration: .5,
@@ -25,7 +33,7 @@ const HeroSection = () => {
         <div className="hero-title">
           <motion.span
           initial="initial"
-          animate="animate"
+          animate={isAnimationComplete ? "animate" : ""}
           variants={fadeUp}
           transition={{
             duration: .5,
@@ -34,7 +42,7 @@ const HeroSection = () => {
           >NEXSOL - </motion.span>
           <motion.span
           initial="initial"
-          animate="animate"
+          animate={isAnimationComplete ? "animate" : ""}
           variants={fadeUp}
           transition={{
             duration: .5,
@@ -43,7 +51,7 @@ const HeroSection = () => {
           >система,</motion.span>
           <motion.span
           initial="initial"
-          animate="animate"
+          animate={isAnimationComplete ? "animate" : ""}
           variants={fadeUp}
           transition={{
             duration: .5,
@@ -54,7 +62,7 @@ const HeroSection = () => {
         <motion.div 
         variants={fadeUp}
         initial="initial"
-        animate="animate"
+        animate={isAnimationComplete ? "animate" : ""}
         transition={{
           duration: .5,
           delay: .2
@@ -64,7 +72,7 @@ const HeroSection = () => {
         </motion.div>
         <motion.a 
         initial="initial"
-        animate="animate"
+        animate={isAnimationComplete ? "animate" : ""}
         variants={fadeUp}
         transition={{
           duration: .5
@@ -77,10 +85,10 @@ const HeroSection = () => {
         scale: 0,
         x: "-100%"
       }}
-      animate={{
+      animate={ isAnimationComplete ? {
         scale: 1,
         x: 0
-      }}
+      } : {}}
       transition={{
         duration: 1,
         delay: 1.2
