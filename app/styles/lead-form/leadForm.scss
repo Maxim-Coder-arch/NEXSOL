@@ -2,7 +2,7 @@
 @use "../mixins/mixins.scss" as *;
 
 .lead-form-section {
-  background: $black;
+  background: $light-background;
   padding: 4rem 2rem;
   
   @media (max-width: 768px) {
@@ -39,7 +39,7 @@
 .lead-form {
   flex: 1;
   max-width: 500px;
-  background: $light-background;
+  background: $black;
   padding: 2rem;
   
   @media (max-width: 768px) {

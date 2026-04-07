@@ -68,6 +68,27 @@ const Footer = () => {
             >
               Телеграм
             </motion.a>
+          </motion.div>
+
+
+          <motion.div 
+            className="footer-contacts"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h3>Прочее</h3>
+            
+            <motion.a 
+              href="/pages/privacy"
+              target="_blank"
+              className="footer-contact-item"
+              whileHover={{ x: 5, color: "#f2c94c" }}
+              transition={{ duration: 0.2 }}
+            >
+              Политика конфиденциальности
+            </motion.a>
             <motion.a 
               href="https://vk.com/nexsol_company"
               target="_blank"
@@ -78,6 +99,7 @@ const Footer = () => {
               Сотрудничество
             </motion.a>
           </motion.div>
+
           <motion.div 
             className="footer-social"
             initial={{ opacity: 0, y: 20 }}
