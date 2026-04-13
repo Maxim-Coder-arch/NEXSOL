@@ -14,7 +14,7 @@ export default function LeadForm() {
   const [errorText, setErrorText] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [submittedData, setSubmittedData] = useState({ name: '', email: '', contact: '', message: '' });
-  const [consent, setConsent] = useState(false);
+  const [consent, setConsent] = useState(true);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

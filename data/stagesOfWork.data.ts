@@ -3,7 +3,7 @@ import { StagesOfWorkProps } from "@/types/stagesOfWork.type.data";
 export const data: StagesOfWorkProps[] = [
   {
     title: "Диагностика",
-    description: "Анализируем рынок, изучаем вашу нишу, конкурентов и текущую ситуацию",
+    description: "Анализируем рынок, подробно изучаем вашу нишу, конкурентов и текущую ситуацию",
   },
   {
     title: "Стратегия",

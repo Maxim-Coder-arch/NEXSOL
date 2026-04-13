@@ -63,7 +63,7 @@ const About = () => {
             <div className="about__services">
               <div className="about__service-item">
                 <div className="about__service-icon business" />
-                <span className="about__service-text">Помощь в продвижении вашего бизнеса</span>
+                <span className="about__service-text">Помощь в продвижении вашего бизнеса и подключение crm систем</span>
               </div>
               <div className="about__service-item">
                 <div className="about__service-icon strategy" />
