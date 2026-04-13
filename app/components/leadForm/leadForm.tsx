@@ -141,7 +141,7 @@ export default function LeadForm() {
               className={status === 'loading' ? 'loading' : ''}
               title={!consent ? "Чтобы отправить форму подтвердите ваше согласие на обработку персональных данных ниже" : "Отправить форму"}
             >
-              {status === 'loading' ? 'Отправка...' : 'Отправить заявку'}
+              {status === 'loading' ? 'Отправка...' : 'Отправить'}
             </button>
             
             <AnimatePresence>
@@ -166,8 +166,8 @@ export default function LeadForm() {
                   required
                 />
                 <span>
-                  Я соглашаюсь на{' '}
-                  <a href="/pages/privacy">обработку персональных данных</a>
+                  Нажимая «Отправить», вы соглашаетесь с {' '}
+                  <a href="/pages/privacy">политикой обработки персональных данных</a>
                 </span>
               </label>
             </div>
